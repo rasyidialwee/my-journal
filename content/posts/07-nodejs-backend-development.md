@@ -2,6 +2,7 @@
 title: "Node.js Backend Development"
 date: 2024-02-10T13:00:00Z
 draft: false
+tags: ["nodejs", "backend", "javascript", "server", "tutorial"]
 ---
 
 Node.js enables JavaScript to run on the server side, opening up new possibilities for full-stack development.

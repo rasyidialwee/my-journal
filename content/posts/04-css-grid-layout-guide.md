@@ -2,6 +2,7 @@
 title: "CSS Grid Layout Guide"
 date: 2024-01-25T09:15:00Z
 draft: false
+tags: ["css", "grid", "layout", "responsive-design", "tutorial"]
 ---
 
 CSS Grid is a powerful layout system that allows you to create complex two-dimensional layouts with ease.

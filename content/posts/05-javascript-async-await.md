@@ -2,6 +2,7 @@
 title: "JavaScript Async/Await Explained"
 date: 2024-02-01T11:45:00Z
 draft: false
+tags: ["javascript", "async", "promises", "tutorial", "frontend"]
 ---
 
 Async/await is a modern JavaScript feature that makes working with asynchronous code much more readable and easier to understand.

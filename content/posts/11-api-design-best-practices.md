@@ -2,6 +2,7 @@
 title: "API Design Best Practices"
 date: 2024-03-01T14:15:00Z
 draft: false
+tags: ["api", "rest", "backend", "design", "best-practices"]
 ---
 
 Well-designed APIs are intuitive, consistent, and easy to use. Following best practices makes your APIs more maintainable.

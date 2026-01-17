@@ -3,6 +3,7 @@ title: "1. My First Article"
 date: 2026-01-17T11:30:00+08:00
 draft: false
 weight: 1
+tags: ["introduction", "hugo", "blogging"]
 ---
 Welcome to my first article.
 

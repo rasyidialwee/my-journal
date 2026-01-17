@@ -2,6 +2,7 @@
 title: "Responsive Design Techniques"
 date: 2024-02-25T12:00:00Z
 draft: false
+tags: ["css", "responsive-design", "mobile", "frontend", "tutorial"]
 ---
 
 Responsive design ensures your website looks great on all devices, from mobile phones to desktop computers.

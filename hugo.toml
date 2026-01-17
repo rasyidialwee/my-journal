@@ -1,4 +1,133 @@
-baseURL = "http://192.168.0.101:8085"
+baseURL = "https://rasyidi.skyrem.my"
 languageCode = "en-us"
 title = "Inside the DevCave: Thoughts, Code & Chaos by Rasyidi"
 theme = "papermod"
+enableRobotsTXT = true
+
+# Pagination
+[pagination]
+  pagerSize = 5
+enableInlineShortcodes = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+enableEmoji = true
+pygmentsUseClasses = true
+
+# Taxonomies
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+# Menu Configuration
+[[menu.main]]
+  identifier = "home"
+  name = "Home"
+  url = "/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "posts"
+  name = "Posts"
+  url = "/posts/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "about"
+  name = "About"
+  url = "/about/"
+  weight = 30
+
+[[menu.main]]
+  identifier = "tags"
+  name = "Tags"
+  url = "/tags/"
+  weight = 40
+
+# Site Parameters
+[params]
+  # Author Information
+  [params.author]
+    name = "Rasyidi"
+    homepage = "https://rasyidi.skyrem.my"
+  env = "production"
+  description = "A developer's blog sharing thoughts, code, and chaos from the DevCave. Exploring web development, programming, and tech adventures."
+  keywords = ["web development", "programming", "blog", "developer", "tech", "coding"]
+  
+  # Enable search functionality
+  enableSearch = true
+  
+  # Show reading time
+  ShowReadingTime = true
+  
+  # Show table of contents
+  ShowToc = true
+  
+  # Show post navigation
+  ShowPostNavLinks = true
+  
+  # Show breadcrumbs
+  ShowBreadCrumbs = true
+  
+  # Show code copy buttons
+  ShowCodeCopyButtons = true
+  
+  # Social Icons
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/rasyidialwee"
+    title = "GitHub"
+  
+  [[params.socialIcons]]
+    name = "twitter"
+    url = "https://twitter.com/rasyidialwee"
+    title = "Twitter/X"
+  
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://linkedin.com/in/rasyidialwee"
+    title = "LinkedIn"
+  
+  # Cover image settings
+  [params.cover]
+    responsiveImages = true
+    linkFullImages = true
+  
+  # Footer settings
+  [params.footer]
+    hideCopyright = false
+  
+  # Disable scroll to top (set to true to disable)
+  disableScrollToTop = false
+  
+  # Disable theme toggle (set to true to disable)
+  disableThemeToggle = false
+  
+  # Schema.org settings for SEO
+  [params.schema]
+    publisherType = "Person"
+  
+  # Social media handles for Open Graph
+  [params.social]
+    twitter = "@rasyidialwee"
+    linkedin = "rasyidialwee"
+  
+  # Sidebar Profile
+  [params.sidebarProfile]
+    name = "Rasyidi"
+    subtitle = "Developer | Blogger | Tech Enthusiast"
+    imageUrl = "/images/avatar.jpg"
+    imageWidth = 120
+    imageHeight = 120
+    imageTitle = "Rasyidi"
+
+# Markup Configuration for better code highlighting
+[markup]
+  [markup.highlight]
+    style = "github"
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = false
+    codeFences = true
+    guessSyntax = true
+    tabWidth = 2

@@ -2,6 +2,7 @@
 title: "Exploring Web Development"
 date: 2024-01-15T10:00:00Z
 draft: false
+tags: ["web-development", "html", "css", "javascript", "tutorial"]
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.

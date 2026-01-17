@@ -2,6 +2,7 @@
 title: "Understanding React Hooks"
 date: 2024-01-20T14:30:00Z
 draft: false
+tags: ["react", "javascript", "hooks", "frontend", "tutorial"]
 ---
 
 React Hooks revolutionized the way we write React components. They allow us to use state and other React features in functional components.

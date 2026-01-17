@@ -2,6 +2,7 @@
 title: "Database Design Principles"
 date: 2024-02-15T10:30:00Z
 draft: false
+tags: ["database", "sql", "design", "backend", "tutorial"]
 ---
 
 Good database design is crucial for building scalable and maintainable applications. Understanding the fundamentals is essential.
