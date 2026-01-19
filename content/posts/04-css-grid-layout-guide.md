@@ -1,7 +1,7 @@
 ---
 title: "CSS Grid Layout Guide"
 date: 2024-01-25T09:15:00Z
-draft: false
+draft: true
 tags: ["css", "grid", "layout", "responsive-design", "tutorial"]
 ---
 

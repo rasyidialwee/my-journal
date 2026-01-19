@@ -1,7 +1,7 @@
 ---
 title: "Database Design Principles"
 date: 2024-02-15T10:30:00Z
-draft: false
+draft: true
 tags: ["database", "sql", "design", "backend", "tutorial"]
 ---
 

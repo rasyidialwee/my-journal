@@ -1,7 +1,7 @@
 ---
 title: "API Design Best Practices"
 date: 2024-03-01T14:15:00Z
-draft: false
+draft: true
 tags: ["api", "rest", "backend", "design", "best-practices"]
 ---
 

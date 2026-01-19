@@ -1,7 +1,7 @@
 ---
 title: "Exploring Web Development"
 date: 2024-01-15T10:00:00Z
-draft: false
+draft: true
 tags: ["web-development", "html", "css", "javascript", "tutorial"]
 ---
 

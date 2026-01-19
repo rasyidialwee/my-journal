@@ -1,7 +1,7 @@
 ---
 title: "TypeScript Basics for Beginners"
 date: 2024-02-05T16:20:00Z
-draft: false
+draft: true
 tags: ["typescript", "javascript", "programming", "tutorial", "beginners"]
 ---
 
