@@ -30,7 +30,7 @@
             height="{{ .imageHeight | default 120 }}" width="{{ .imageWidth | default 120 }}" />
         {{- end }}
         {{- end }}
-        <h3 class="sidebar-name">{{ .name | default site.Params.author.name | default site.Title | markdownify }}</h3>
+        <h3 class="sidebar-name">{{ .name | default site.Params.author | default site.Title | markdownify }}</h3>
         {{- if .subtitle }}
         <p class="sidebar-subtitle">{{ .subtitle | markdownify }}</p>
         {{- end }}

@@ -46,11 +46,8 @@ pygmentsUseClasses = true
 
 # Site Parameters
 [params]
-  # Author Information
-  [params.author]
-    name = "Rasyidi"
-    homepage = "https://rasyidi.skyrem.my"
   env = "production"
+  author = "Rasyidi"
   description = "A developer's blog sharing thoughts, code, and chaos from the DevCave. Exploring web development, programming, and tech adventures."
   keywords = ["web development", "programming", "blog", "developer", "tech", "coding"]
   
@@ -72,54 +69,54 @@ pygmentsUseClasses = true
   # Show code copy buttons
   ShowCodeCopyButtons = true
   
-  # Social Icons
-  [[params.socialIcons]]
-    name = "github"
-    url = "https://github.com/rasyidialwee"
-    title = "GitHub"
-  
-  [[params.socialIcons]]
-    name = "twitter"
-    url = "https://twitter.com/rasyidialwee"
-    title = "Twitter/X"
-  
-  [[params.socialIcons]]
-    name = "linkedin"
-    url = "https://linkedin.com/in/rasyidialwee"
-    title = "LinkedIn"
-  
-  # Cover image settings
-  [params.cover]
-    responsiveImages = true
-    linkFullImages = true
-  
-  # Footer settings
-  [params.footer]
-    hideCopyright = false
-  
   # Disable scroll to top (set to true to disable)
   disableScrollToTop = false
   
   # Disable theme toggle (set to true to disable)
   disableThemeToggle = false
-  
-  # Schema.org settings for SEO
-  [params.schema]
-    publisherType = "Person"
-  
-  # Social media handles for Open Graph
-  [params.social]
-    twitter = "@rasyidialwee"
-    linkedin = "rasyidialwee"
-  
-  # Sidebar Profile
-  [params.sidebarProfile]
-    name = "Rasyidi"
-    subtitle = "Developer | Blogger | Tech Enthusiast"
-    imageUrl = "/images/avatar.jpg"
-    imageWidth = 120
-    imageHeight = 120
-    imageTitle = "Rasyidi"
+
+# Social Icons
+[[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/rasyidialwee"
+  title = "GitHub"
+
+[[params.socialIcons]]
+  name = "twitter"
+  url = "https://twitter.com/rasyidialwee"
+  title = "Twitter/X"
+
+[[params.socialIcons]]
+  name = "linkedin"
+  url = "https://linkedin.com/in/rasyidialwee"
+  title = "LinkedIn"
+
+# Cover image settings
+[params.cover]
+  responsiveImages = true
+  linkFullImages = true
+
+# Footer settings
+[params.footer]
+  hideCopyright = false
+
+# Schema.org settings for SEO
+[params.schema]
+  publisherType = "Person"
+
+# Social media handles for Open Graph
+[params.social]
+  twitter = "@rasyidialwee"
+  linkedin = "rasyidialwee"
+
+# Sidebar Profile
+[params.sidebarProfile]
+  name = "Rasyidi"
+  subtitle = "Developer | Blogger | Tech Enthusiast"
+  imageUrl = "/images/avatar.jpg"
+  imageWidth = 120
+  imageHeight = 120
+  imageTitle = "Rasyidi"
 
 # Markup Configuration for better code highlighting
 [markup]

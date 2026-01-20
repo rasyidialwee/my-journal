@@ -2,7 +2,6 @@
 title: "How I Ended Up Building Hugo as My Journal"
 date: 2026-01-17T11:30:00+08:00
 draft: false
-weight: 1
 tags: ["introduction", "hugo", "blogging", "journey", "story"]
 cover:
   image: "/images/hugo-journal-banner.jpg"
