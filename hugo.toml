@@ -74,6 +74,10 @@ pygmentsUseClasses = true
   
   # Disable theme toggle (set to true to disable)
   disableThemeToggle = false
+  
+  # Share buttons on posts (Facebook, LinkedIn, WhatsApp, Copy link)
+  ShowShareButtons = true
+  ShareButtons = ["facebook", "linkedin", "whatsapp"]
 
 # Social Icons
 [[params.socialIcons]]

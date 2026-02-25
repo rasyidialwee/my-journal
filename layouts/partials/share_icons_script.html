@@ -1,0 +1,52 @@
+{{- if site.Params.ShowShareButtons }}
+<style>
+.share-buttons .share-copy-link {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  line-height: 1;
+}
+.share-buttons .share-copy-link:hover { opacity: 0.85; }
+.share-buttons .share-copy-link .share-copy-label { font-size: 0.9em; }
+.entry-share .share-buttons { margin-top: 0.5em; }
+.entry-share { position: relative; z-index: 2; }
+</style>
+<script>
+(function() {
+  function copyUrl(btn) {
+    var url = btn.getAttribute('data-url');
+    var label = btn.querySelector('.share-copy-label');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function() {
+        if (label) label.textContent = 'Copied!';
+        setTimeout(function() { if (label) label.textContent = 'Copy link'; }, 2000);
+      });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = url;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'absolute';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        if (label) label.textContent = 'Copied!';
+        setTimeout(function() { if (label) label.textContent = 'Copy link'; }, 2000);
+      } catch (e) {}
+      document.body.removeChild(ta);
+    }
+  }
+  document.body.addEventListener('click', function(e) {
+    var btn = e.target.closest('.share-copy-link');
+    if (btn) { e.preventDefault(); e.stopPropagation(); copyUrl(btn); }
+  });
+})();
+</script>
+{{- end }}
