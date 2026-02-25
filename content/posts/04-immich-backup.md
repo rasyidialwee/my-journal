@@ -2,7 +2,7 @@
 title: "Immich Backup: Setting Up a Secondary Backup Strategy"
 date: 2026-02-18T10:00:00+08:00
 draft: false
-weight: 0
+weight: 1
 tags: ["immich", "backup", "truenas", "winscp", "automation", "homelab"]
 cover:
   image: "/images/immich-backup-banner.png"

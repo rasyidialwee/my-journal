@@ -2,7 +2,7 @@
 title: "Setting Up Immich on TrueNAS Scale: My Photo Backup Solution"
 date: 2026-02-06T11:30:00+08:00
 draft: false
-weight: 3
+weight: 2
 tags: ["immich", "truenas", "self-hosted", "photo-backup", "tutorial"]
 cover:
   image: "/images/immich-01-apps-service.png"

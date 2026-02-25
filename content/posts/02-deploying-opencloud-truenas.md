@@ -2,7 +2,7 @@
 title: "How I Deployed OpenCloud on TrueNAS Scale: A Lightweight Alternative to Nextcloud"
 date: 2026-01-17T11:30:00+08:00
 draft: false
-weight: 1
+weight: 2
 tags: ["opencloud", "truenas", "docker", "dockge", "cloudflare", "self-hosted", "tutorial", "postgresql"]
 cover:
   image: "/images/02.png"
