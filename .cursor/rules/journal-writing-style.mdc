@@ -1,0 +1,11 @@
+---
+description: Journal and blog voice—read WRITING_STYLE.md when editing Markdown content
+globs: content/**/*.md
+alwaysApply: false
+---
+
+# Journal writing (ghostwriter)
+
+When creating or editing files under `content/`, follow the author’s voice defined in **`WRITING_STYLE.md`** at the repository root (UK English on new work; match existing spelling when editing legacy posts; personal + teaching tone; direct “you”; firm opinions; dry wit about tools only).
+
+If `WRITING_STYLE.md` conflicts with a one-off author instruction in chat, **obey the chat instruction** for that task.
