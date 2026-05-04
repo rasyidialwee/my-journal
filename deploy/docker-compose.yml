@@ -1,0 +1,9 @@
+services:
+  blog:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    image: my-journal-blog:latest
+    restart: unless-stopped
+    ports:
+      - "${BLOG_HTTP_PORT:-8080}:80"
