@@ -24,7 +24,7 @@ So I dove into Google and Reddit, searching for static site generators that coul
 
 Hugo was perfect: fast static site generation, native Markdown support, no database required, simple and clean, and developer-friendly. It felt like it was made for developers like me who want to write without the overhead of a traditional CMS.
 
-I run Hugo and Nginx on my homelab server, which is powered by **TrueNAS SCALE**. There's something satisfying about self-hosting your own blog—full control, no vendor lock-in, and the ability to customize everything exactly how you want it. *(I'll share more about my homelab journey and setup in another article—there's a whole story there about building a personal infrastructure that's both powerful and educational.)*
+I run Hugo and Nginx on my homelab server, which is powered by **TrueNAS SCALE**. There's something satisfying about self-hosting your own blog—full control, no vendor lock-in, and the ability to customise everything exactly how you want it. *(I'll share more about my homelab journey and setup in another article—there's a whole story there about building a personal infrastructure that's both powerful and educational.)*
 
 This blog isn't just about sharing code snippets or tutorials. It's about documenting my journey from a full-stack developer to a Solution Architect. It's about the lessons learned, the mistakes made, and the insights gained along the way. It's my journal of growth in this industry.
 

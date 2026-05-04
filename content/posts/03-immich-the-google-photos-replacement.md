@@ -11,9 +11,9 @@ cover:
 
 I've been on a journey to find the perfect solution for backing up my photos and videos. It started with OneDrive—the price made sense at the time, and it was convenient. But as my photo library grew and I became more privacy-conscious, I wanted something I controlled. So I migrated to Nextcloud, thinking it would be the perfect self-hosted solution. It worked, but it felt heavy for what I needed.
 
-Then I discovered [OpenCloud](/posts/02-deploying-opencloud-truenas/), which I've been using for general file management. It's lightweight and perfect for documents and files. But for photos? I needed something purpose-built. Something that could handle thousands of photos, automatically organize them, and provide a beautiful interface for browsing memories.
+Then I discovered [OpenCloud](/posts/02-deploying-opencloud-truenas/), which I've been using for general file management. It's lightweight and perfect for documents and files. But for photos? I needed something purpose-built. Something that could handle thousands of photos, automatically organise them, and provide a beautiful interface for browsing memories.
 
-That's when I found **Immich**—a self-hosted photo and video backup solution that runs directly from your mobile phone. After two months of using it, I can confidently say it's been a game-changer. The automatic backup, face recognition, and smart search features make it feel like having your own personal Google Photos, but running entirely on your own infrastructure.
+That's when I found **Immich**—a self-hosted photo and video backup solution that runs directly from your mobile phone. After two months of using it, I'm convinced it's earned its keep. The automatic backup, face recognition, and smart search features make it feel like having your own personal Google Photos, but running entirely on your own infrastructure.
 
 If you're running TrueNAS Scale and want to set up Immich, here's my complete walkthrough of the setup process.
 
@@ -24,7 +24,7 @@ Immich is an open-source, self-hosted photo and video backup solution. Think of 
 - **Automatic backup** from mobile devices
 - **Face recognition** and object detection
 - **Smart search** using machine learning
-- **Album organization** and sharing
+- **Album organisation** and sharing
 - **Video playback** and transcoding
 - **Beautiful web interface** and mobile apps
 
@@ -39,7 +39,7 @@ Before we dive in, make sure you have:
 - **Basic familiarity** with TrueNAS Apps interface
 - **Storage space** allocated for your photos (I recommend at least 100GB to start)
 
-## Step 1: Discovering and Installing Immich
+## Step 1: Discovering and installing Immich
 
 The first step is finding Immich in the TrueNAS Apps catalog. TrueNAS Scale makes this incredibly easy with its built-in app discovery.
 
@@ -57,28 +57,28 @@ The first step is finding Immich in the TrueNAS Apps catalog. TrueNAS Scale make
 
 **Note:** If you see an "Installed" badge on the Immich card, it means you've already installed it. You can click on it to manage or reconfigure your existing installation.
 
-## Step 2: Basic Configuration
+## Step 2: Basic configuration
 
 Once you click on Immich, you'll be taken to the configuration screen. This is where you'll set up the core settings for your Immich instance.
 
 ![Immich Configuration screen](/images/immich-03-configuration.png)
 
-### Core Settings
+### Core settings
 
 **Timezone:**
-- Select your timezone (I chose `Asia/Kuala_Lumpur`). This is important for proper date/time organization of your photos.
+- Select your timezone (I chose `Asia/Kuala_Lumpur`). This is important for proper date/time organisation of your photos.
 
 **Postgres Image:**
 - I selected **Postgres 18** (marked with CAUTION). This is the database backend that Immich uses. Postgres 18 is stable and well-supported, but make sure you're comfortable with this version.
 
 **Database Storage Type:**
-- Choose **SSD** if your storage pool uses SSDs, or select the appropriate type for your setup. This helps Immich optimize database performance.
+- Choose **SSD** if your storage pool uses SSDs, or select the appropriate type for your setup. This helps Immich optimise database performance.
 
 **Database Password & Redis Password:**
 - Set strong, unique passwords for both. These are critical for security. I recommend using a password manager to generate and store these securely.
 - The passwords are masked by default—use the eye icon to toggle visibility when entering them.
 
-### Machine Learning Configuration
+### Machine learning configuration
 
 ![Machine Learning settings](/images/immich-04-machine-learning.png)
 
@@ -96,7 +96,7 @@ Immich's machine learning features are what make it special. These enable face r
 **Hugging Face Endpoint:**
 - Leave this empty unless you have a custom endpoint. The default works fine for most users.
 
-## Step 3: User and Group Configuration
+## Step 3: User and group configuration
 
 ![User and Group Configuration](/images/immich-05-user-group.png)
 
@@ -108,7 +108,7 @@ This section configures the user and group IDs that Immich will use inside the c
 
 **Why this matters:** When Immich writes photos to your storage, it needs the correct permissions. Matching the container's UID/GID with your TrueNAS user ensures files are created with the right ownership.
 
-## Step 4: Network Configuration
+## Step 4: Network configuration
 
 ![Network Configuration](/images/immich-06-network.png)
 
@@ -128,13 +128,13 @@ Here's where you configure how Immich will be accessible on your network.
 
 **Accessing Immich:** After deployment, you'll access Immich at `http://your-truenas-ip:30041` (or whatever port you chose).
 
-## Step 5: Storage Configuration
+## Step 5: Storage configuration
 
 This is one of the most important steps. You need to configure where Immich will store your photos and its database.
 
 ![Storage Configuration](/images/immich-07-storage.png)
 
-### Data Storage (Upload Location)
+### Data storage (upload location)
 
 **Type:**
 - Select **"Host Path (Path that already exists on the system)"**
@@ -146,12 +146,12 @@ This is one of the most important steps. You need to configure where Immich will
 **Enable ACL:**
 - I left this unchecked, but you may need it depending on your TrueNAS permissions setup.
 
-### Machine Learning Cache
+### Machine learning cache
 
 **Type:**
 - I selected **"Temporary (Temporary directory created on the disk)"**. This is fine for ML cache since it can be regenerated.
 
-### Postgres Data Storage
+### Postgres data storage
 
 ![Postgres Storage Configuration](/images/immich-08-postgres-storage.png)
 
@@ -165,7 +165,7 @@ This is one of the most important steps. You need to configure where Immich will
 **Automatic Permissions:**
 - I enabled this checkbox. It helps ensure the database has the correct permissions automatically.
 
-### Creating the Datasets
+### Creating the datasets
 
 Before configuring storage, you should create the datasets in TrueNAS:
 
@@ -179,7 +179,7 @@ Before configuring storage, you should create the datasets in TrueNAS:
 
 After setup, you can verify your datasets are created correctly. As you can see in my setup, the `data` dataset holds the bulk of storage (1.22 TiB), while `pgdata` is much smaller (3.94 GiB), which is expected.
 
-## Step 6: Resources Configuration
+## Step 6: Resources configuration
 
 ![Resources Configuration](/images/immich-09-resources.png)
 
@@ -189,7 +189,7 @@ Immich can be resource-intensive, especially with machine learning enabled. Here
 - I allocated **2 CPUs**. This provides enough processing power for photo processing and ML tasks without overwhelming my system.
 
 **Memory:**
-- I set **4096 MB (4 GB)** of RAM. This is sufficient for most use cases, but you may need more if you have a very large photo library or want faster ML processing.
+- I set **4096 MB (4 GB)** of RAM. This is sufficient for most use cases, but you may need more if you have a large photo library or want faster ML processing.
 
 **GPU Passthrough:**
 - I left **"Passthrough available (non-NVIDIA) GPUs"** unchecked since I'm not using GPU acceleration. If you have a compatible GPU and want faster ML processing, you can enable this.
@@ -199,7 +199,7 @@ Immich can be resource-intensive, especially with machine learning enabled. Here
 - If Immich feels slow, consider increasing CPU or memory allocation.
 - Machine learning tasks (face recognition, object detection) are the most resource-intensive.
 
-## Deployment and First Access
+## Deployment and first access
 
 Once you've configured all the settings:
 
@@ -207,7 +207,7 @@ Once you've configured all the settings:
 2. Wait 2-5 minutes for Immich to start up. You can monitor the progress in the Apps interface
 3. Once the status shows "Running", navigate to `http://your-truenas-ip:30041` (or your configured port)
 
-### Initial Setup in Immich
+### Initial setup in Immich
 
 When you first access Immich:
 
@@ -217,13 +217,13 @@ When you first access Immich:
 4. Download the Immich mobile app (iOS or Android)
 5. Connect your mobile device to start automatic backups
 
-The mobile app is where Immich really shines—it automatically backs up your photos in the background, just like Google Photos, but to your own server.
+The mobile app is where Immich shines—it automatically backs up your photos in the background, just like Google Photos, but to your own server.
 
-## Troubleshooting: What I Learned
+## Troubleshooting: what I learned
 
 After two months of running Immich, here are some issues I encountered and how I solved them:
 
-### Issue 1: Permission Errors When Uploading Photos
+### Issue 1: Permission errors when uploading photos
 
 I got permission errors when trying to upload photos initially. The container couldn't write to the storage path.
 
@@ -235,7 +235,7 @@ I got permission errors when trying to upload photos initially. The container co
   sudo chown -R 568:568 /mnt/storage/immich/data
   ```
 
-### Issue 2: Machine Learning Not Working
+### Issue 2: Machine learning not working
 
 Face recognition and object detection weren't working even though ML was enabled.
 
@@ -245,17 +245,17 @@ Face recognition and object detection weren't working even though ML was enabled
 - Check the Immich logs in the Apps interface for ML-related errors
 - Ensure you have enough storage space for the ML cache
 
-### Issue 3: Slow Performance with Large Libraries
+### Issue 3: Slow performance with large libraries
 
 Initial indexing and ML processing was slow with my 1TB+ photo library.
 
 **Solution:**
-- Be patient—initial processing can take days for very large libraries
+- Be patient—initial processing can take days for large libraries
 - Increase CPU and memory allocation if possible
 - Consider disabling ML temporarily during initial import, then re-enable it
 - Immich processes photos in the background, so you can continue using it while processing
 
-### Issue 4: Port Conflicts
+### Issue 4: Port conflicts
 
 The default port was already in use by another service.
 
@@ -264,43 +264,43 @@ The default port was already in use by another service.
 - Check what ports are in use: `System Settings → Services` in TrueNAS
 - Common ports to avoid: 80, 443, 8080, 9000
 
-## Best Practices After 2 Months
+## Best practices after two months
 
 Here's what I've learned from running Immich for two months:
 
-### Storage Management
+### Storage management
 
 - **Regular Snapshots:** Use TrueNAS snapshots for your Immich datasets. I take daily snapshots of both `data` and `pgdata` datasets. This saved me once when I accidentally deleted a large album.
 - **Monitor Storage Growth:** Photos and videos accumulate quickly. Set up alerts in TrueNAS for storage thresholds.
 - **Consider Compression:** Immich stores photos in their original format. If storage is a concern, you might want to enable compression in TrueNAS or use Immich's duplicate detection features.
 
-### Backup Strategy
+### Backup strategy
 
 - **Dataset Replication:** I replicate my Immich datasets to another TrueNAS system for redundancy
 - **External Backups:** Consider backing up critical photos to external storage periodically
 - **Database Backups:** The `pgdata` dataset is small but critical—make sure it's included in your backup strategy
 
-### Performance Tips
+### Performance tips
 
 - **Resource Monitoring:** Keep an eye on CPU and memory usage, especially during initial ML processing
 - **Network Speed:** For faster uploads from mobile devices, ensure good Wi-Fi connectivity
 - **Storage Type:** Using SSDs for the database (`pgdata`) significantly improves search and browsing performance
 
-### Mobile App Setup
+### Mobile app setup
 
-- **Background Backup:** Enable background backup in the mobile app settings for automatic syncing
-- **Battery Optimization:** Add Immich to your phone's battery optimization exceptions to ensure backups continue
+- **Background backup:** Enable background backup in the mobile app settings for automatic syncing
+- **Battery optimisation:** Add Immich to your phone's battery optimisation exceptions to ensure backups continue
 - **Network Settings:** Configure the app to only backup on Wi-Fi if you have data limits
 
-### Organization Tips
+### Organisation tips
 
-- **Use Albums:** Create albums for events, trips, or themes. Immich's smart search makes finding photos easy, but albums help with manual organization.
+- **Use albums:** Create albums for events, trips, or themes. Immich's smart search makes finding photos easy, but albums help with manual organisation.
 - **Face Recognition:** Train the face recognition by tagging people. The more you tag, the better it gets at recognizing faces automatically.
-- **Search Features:** Use Immich's search to find photos by date, location, objects, or people. It's surprisingly accurate.
+- **Search features:** Use Immich's search to find photos by date, location, objects, or people. In practice it's accurate enough that I stop hunting manually.
 
-## Final Thoughts
+## Final thoughts
 
-After two months of using Immich, I'm extremely happy with the choice. It's replaced my need for cloud photo services entirely. The automatic backup from my phone works seamlessly, the face recognition is impressively accurate, and having full control over my photos gives me peace of mind.
+After two months of using Immich, I'm happy with the choice. It's replaced my need for cloud photo services entirely. The automatic backup from my phone works seamlessly, the face recognition holds up in daily use, and having full control over my photos gives me peace of mind.
 
 **What I love:**
 - Automatic background backup from mobile devices
@@ -314,13 +314,13 @@ After two months of using Immich, I'm extremely happy with the choice. It's repl
 - Resource usage can be high with ML enabled (but worth it for the features)
 - Some advanced features require technical knowledge to configure
 
-**Comparison to Previous Solutions:**
-- **vs. OneDrive:** Immich is purpose-built for photos, making it much better at organization and search
+**Comparison to previous solutions:**
+- **vs. OneDrive:** Immich is purpose-built for photos, making it much better at organisation and search
 - **vs. Nextcloud:** Immich is faster, more intuitive, and better at handling large photo libraries
 - **vs. OpenCloud:** They serve different purposes—OpenCloud for general files, Immich specifically for photos/videos
 
-If you're looking for a self-hosted photo backup solution and you're already running TrueNAS Scale, Immich is absolutely worth setting up. The initial configuration might seem involved, but once it's running, it's been rock solid for me. The peace of mind of having my photos backed up to my own infrastructure, combined with features that rival commercial solutions, makes it a perfect fit for my homelab.
+If you're looking for a self-hosted photo backup solution and you're already running TrueNAS Scale, Immich is worth setting up. The initial configuration might seem involved, but once it's running, it's been rock solid for me. The peace of mind of having my photos backed up to my own infrastructure, combined with features that rival commercial solutions, makes it a perfect fit for my homelab.
 
 ---
 
-*Have you set up Immich or another self-hosted photo solution? I'd love to hear about your experience and any tips you've learned along the way!*
+*If you run Immich differently—GPU passthrough, odd ports, migration from something else—those details are usually the useful half of a tutorial.*

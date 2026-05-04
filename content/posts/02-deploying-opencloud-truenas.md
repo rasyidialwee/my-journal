@@ -11,11 +11,11 @@ cover:
 
 I've been running my homelab on TrueNAS Scale for a while now, and I've always wanted a self-hosted file management solution. You know, something like Dropbox or Google Drive, but running on my own infrastructure. My first instinct was Nextcloud—it's the most popular option, right? But as I started researching, I realized it was heavier than I needed. Nextcloud can be resource-intensive, and I wanted something lighter.
 
-That's when I discovered **OpenCloud**. It's a lightweight, open-source file management and collaboration platform that serves as an excellent alternative to Nextcloud. What caught my attention was that it uses less than 100MB of RAM while still offering robust file management features. Perfect for my homelab setup.
+That's when I discovered **OpenCloud**. It's a lightweight, open-source file management and collaboration platform that serves as an excellent alternative to Nextcloud. What caught my attention was that it uses less than 100MB of RAM while still offering solid file management features. Perfect for my homelab setup.
 
-After spending some time deploying it on my TrueNAS Scale system using Dockge for container management, I thought I'd document the process. There were a few gotchas along the way—especially around initialization and Cloudflare Tunnel configuration—that I wish someone had told me about upfront. So here's my journey and what I learned.
+After spending some time deploying it on my TrueNAS Scale system using Dockge for container management, I thought I'd document the process. There were a few gotchas along the way—especially around initialisation and Cloudflare Tunnel configuration—that I wish someone had told me about upfront. So here's my journey and what I learned.
 
-## What I Used
+## What I used
 
 I deployed OpenCloud with:
 - **PostgreSQL** as the database backend (more reliable than SQLite for production use)
@@ -31,9 +31,9 @@ Before we dive in, make sure you have:
 - Cloudflare Tunnel set up and ready to use
 - Basic familiarity with SSH and terminal commands
 
-## Part 1: Creating Datasets
+## Part 1: Creating datasets
 
-One thing I learned early on with TrueNAS is that data organization matters. When I first started using Dockge, I made the mistake of storing everything inside Dockge's stack directory. That made backups and migrations a nightmare. So now, I always create separate datasets for each application.
+One thing I learned early on with TrueNAS is that data organisation matters. When I first started using Dockge, I made the mistake of storing everything inside Dockge's stack directory. That made backups and migrations a nightmare. So now, I always create separate datasets for each application.
 
 For OpenCloud, I created a dedicated dataset structure:
 
@@ -59,7 +59,7 @@ Your final structure should look like:
 └── database/
 ```
 
-### Setting Permissions
+### Setting permissions
 
 This is where I made my first mistake. I didn't set the permissions correctly, and OpenCloud couldn't write to the directories. After some troubleshooting, I learned that containers run with specific user IDs, and those need to match your dataset permissions.
 
@@ -79,11 +79,11 @@ sudo chmod -R 700 /mnt/your-pool/opencloud/database
 - UID 1000:1000 is the default user inside the OpenCloud container
 - UID 999:999 is the postgres user in the PostgreSQL Alpine container
 
-## Part 2: Initializing OpenCloud
+## Part 2: Initialising OpenCloud
 
-Here's the part that tripped me up initially. OpenCloud requires proper initialization before the first run. This creates essential configuration files including JWT secrets and system credentials. I tried skipping this step and just running the container—big mistake. It kept throwing "missing or invalid config" errors.
+Here's the part that tripped me up initially. OpenCloud requires proper initialisation before the first run. This creates essential configuration files including JWT secrets and system credentials. I tried skipping this step and just running the container—big mistake. It kept throwing "missing or invalid config" errors.
 
-### Running the Init Command
+### Running the init command
 
 ```bash
 sudo docker run --rm \
@@ -107,16 +107,16 @@ sudo docker run --rm \
 
 I made the mistake of not saving this password the first time. Had to re-run the init command, which wasn't a big deal, but it's annoying when you're eager to get things running.
 
-**Key points about initialization:**
+**Key points about initialisation:**
 - The OC_URL must match how you'll access OpenCloud (your public domain)
 - INSECURE=true tells OpenCloud to accept self-signed certificates
 - This only needs to be run once—the config persists in your dataset
 
-## Part 3: Creating the Docker Compose Stack
+## Part 3: Creating the Docker Compose stack
 
 Now for the fun part—creating the actual application stack in Dockge. I love how Dockge makes managing Docker Compose stacks so much easier than doing it manually.
 
-### Creating the Stack
+### Creating the stack
 
 1. Open Dockge at `http://your-truenas-ip:5001`
 2. Click **+ Compose**
@@ -171,7 +171,7 @@ networks:
 - Replace `your-domain.com` with your actual domain
 - The OC_URL MUST match the domain you'll use to access OpenCloud—this caused me issues later when I had a mismatch
 
-### Deploying the Stack
+### Deploying the stack
 
 1. Click **Deploy** in Dockge
 2. Wait 30-60 seconds for both containers to start
@@ -183,7 +183,7 @@ networks:
 
 Since I'm already using Cloudflare Tunnel for my blog and other services, exposing OpenCloud was straightforward. But there was one critical setting I missed initially that caused 502 errors.
 
-### Creating the Public Hostname
+### Creating the public hostname
 
 1. Go to Cloudflare Zero Trust Dashboard
 2. Navigate to **Networks → Tunnels**
@@ -196,7 +196,7 @@ Since I'm already using Cloudflare Tunnel for my blog and other services, exposi
 - Service Type: HTTPS
 - URL: `https://192.168.x.x:9200` (your TrueNAS IP)
 
-### The Critical Setting
+### The critical setting
 
 Click the gear icon next to the service URL and configure:
 
@@ -219,16 +219,16 @@ Click the gear icon next to the service URL and configure:
 
 You should now see the OpenCloud login page with a valid SSL certificate from Cloudflare!
 
-## Part 5: First Login and Verification
+## Part 5: First login and verification
 
-### Logging In
+### Logging in
 
 1. Navigate to `https://your-subdomain.your-domain.com`
 2. Log in with:
    - Username: `admin`
    - Password: [The password from Step 3]
 
-### Testing Everything Works
+### Testing everything works
 
 To verify everything is working:
 
@@ -245,11 +245,11 @@ To verify everything is working:
 **One quirk I noticed:**
 If you see "failed" notifications but changes actually work, that's normal. Just refresh the page to see updated data. This is a known quirk when using reverse proxies like Cloudflare Tunnel. The operations succeed, but the response headers don't match what the frontend expects.
 
-## Troubleshooting: What I Learned the Hard Way
+## Troubleshooting: what I learned the hard way
 
 ### Issue 1: "Missing or invalid config" Error
 
-I got this error when I tried to skip the initialization step. OpenCloud can't find or read its configuration.
+I got this error when I tried to skip the initialisation step. OpenCloud can't find or read its configuration.
 
 **Solution:**
 - Ensure OC_URL in docker-compose matches your access URL exactly
@@ -293,9 +293,9 @@ As I mentioned earlier, this is cosmetic. The operations actually work.
 - Refresh the page to see changes
 - Setting the HTTP Host Header in Cloudflare may help
 
-## Best Practices I Follow
+## Best practices I follow
 
-### Data Management
+### Data management
 
 - **Snapshots:** I use TrueNAS snapshot tasks for my OpenCloud datasets. It's saved me a few times when I made configuration mistakes.
 - **Backups:** I back up the three datasets separately for flexibility. If I need to migrate, I can move them independently.
@@ -311,7 +311,7 @@ As I mentioned earlier, this is cosmetic. The operations actually work.
 ### Performance
 
 - Monitor container resource usage in Dockge—OpenCloud really is lightweight
-- Consider increasing PostgreSQL shared_buffers for better performance if you have the RAM
+- Consider increasing PostgreSQL shared_buffers if you have the RAM to spare
 - Enable HTTP/2 and compression in Cloudflare for faster loading
 
 ### Maintenance
@@ -320,12 +320,12 @@ As I mentioned earlier, this is cosmetic. The operations actually work.
 - Monitor OpenCloud logs for unusual activity
 - Test your backups periodically
 
-## Final Thoughts
+## Final thoughts
 
 After running OpenCloud for a while now, I'm really happy with the choice. It's lightweight, fast, and does everything I need without the overhead of Nextcloud. The setup process had its challenges, but once everything was configured correctly, it's been rock solid.
 
 The key lessons I learned:
-- Initialize OpenCloud with the correct OC_URL before first run
+- Initialise OpenCloud with the correct OC_URL before first run
 - Use absolute paths in docker-compose to keep data outside Dockge
 - Enable "No TLS Verify" in Cloudflare Tunnel for self-signed certificates
 - Ensure OC_URL matches your access method to avoid token issues
@@ -334,4 +334,4 @@ If you're looking for a lightweight self-hosted file management solution and you
 
 ---
 
-*If you encounter problems not covered here, check the OpenCloud GitHub repository or the TrueNAS community forums for additional help. And if you've deployed OpenCloud yourself, I'd love to hear about your experience!*
+*If something here doesn't match your setup, the OpenCloud GitHub repo and TrueNAS forums usually have the edge cases—Docker and TLS never miss a chance to disagree with you.*
